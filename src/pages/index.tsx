@@ -26,7 +26,7 @@ export default function Home() {
             />
             <div className="p-5">
               <p className="text-medium mb-5 text-gray-700">
-                - Hi, sir, do you have a qr-code ?
+                - Wellcome, Sir, do you have a qr-code ID ?
               </p>
               <C.DefaultButton
                 onClick={() => router.push("/as")}

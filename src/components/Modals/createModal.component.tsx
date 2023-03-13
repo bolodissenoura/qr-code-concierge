@@ -53,7 +53,7 @@ export function CreateModal(props: CreateModalInterface & InfoInterface) {
                 </button>
               </div>
               <div className="p-6 space-y-6">
-                <div className="grid gap-6 mb-6 md:grid-cols-2">
+                <div className="mb-6 md:grid-cols-2">
                   <C.TextField
                     name="name"
                     type="text"
