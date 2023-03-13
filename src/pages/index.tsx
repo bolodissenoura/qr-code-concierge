@@ -1,7 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
+import React from "react";
 import Head from "next/head";
 import * as C from "../components";
+import router from "next/router";
 
 export default function Home() {
+  const [modalState, setModalState] = React.useState({
+    open: false,
+  });
   return (
     <>
       <Head>
@@ -19,12 +25,32 @@ export default function Home() {
               className="h-auto w-full"
             />
             <div className="p-5">
-              <p className="text-medium mb-5 text-gray-700">- Hi, sir, do you have a qr-code ?</p>
-              <C.DefaultButton text="Yes, I have" />
-              <C.DefaultButton text="Not yet..." />
+              <p className="text-medium mb-5 text-gray-700">
+                - Hi, sir, do you have a qr-code ?
+              </p>
+              <C.DefaultButton
+                onClick={() => router.push("/as")}
+                text="Yes, I have"
+              />
+              <C.DefaultButton
+                text="Not yet..."
+                onClick={() =>
+                  setModalState({
+                    open: true,
+                  })
+                }
+              />
             </div>
           </div>
         </div>
+        <C.CreateModal
+          info={modalState}
+          closeModal={() =>
+            setModalState({
+              open: false,
+            })
+          }
+        />
       </main>
     </>
   );
