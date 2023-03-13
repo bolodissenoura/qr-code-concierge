@@ -3,6 +3,7 @@ import React from "react";
 import Modal from "react-modal";
 import * as C from "../index";
 import { customStyles } from "./modal.styles";
+import QRCode from "react-qr-code";
 
 interface CreateModalInterface {
   titleModal?: string;
@@ -19,6 +20,7 @@ export function CreateModal(props: CreateModalInterface & InfoInterface) {
   function handleSubmit() {
     console.log("test");
   }
+  const [githubUrl, setGithubUrl] = React.useState("");
   return (
     <>
       <Modal
@@ -53,6 +55,7 @@ export function CreateModal(props: CreateModalInterface & InfoInterface) {
                 </button>
               </div>
               <div className="p-6 space-y-6">
+                <QRCode value={githubUrl} />
                 <div className="mb-6 md:grid-cols-2">
                   <C.TextField
                     name="name"
@@ -66,20 +69,14 @@ export function CreateModal(props: CreateModalInterface & InfoInterface) {
                     required
                     label="Your Github profile URL"
                   />
-                  <C.TextField
-                    name="linkedin"
-                    type="text"
-                    required
-                    label="Your Linkedin profile URL"
-                  />
                 </div>
               </div>
               <div className="flex items-center justify-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                 <button
                   data-modal-hide="defaultModal"
                   type="submit"
-                  className="text-white w-1/2 bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
-                  Save changes
+                  className="bg-indigo-600  py-2 text-indigo-100 hover:bg-indigo-500 hover:shadow-md duration-75 rounded-lg text-sm px-5 text-center ">
+                  Save my ID
                 </button>
                 <button
                   onClick={() => props.closeModal()}
